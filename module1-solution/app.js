@@ -1,25 +1,28 @@
 ( function(){
 'use strict'
 
-angular.module("LunchChecker", [])
-.controller('LunchCheckerController', LunchCheckerController);
+angular.module("LunchCheck", [])
+.controller('LunchCheckController', LunchCheckController);
 
-LunchCheckerController.$inject = ['$scope'];
+LunchCheckController.$inject = ['$scope'];
 
-function LunchCheckerController($scope) {
+function LunchCheckController($scope) {
     $scope.lunchItems="";
     $scope.lunchStatus="";
+    $scope.controlStyle="";
     $scope.checkLunch = function(){
         var status = "";
-        var items = $scope.lunchItems.split(",");
-        var itemCount= getCountOfNonEmptyItems(items);
+        var itemCount= getCountOfNonEmptyItems( $scope.lunchItems.split(","));
         console.log(itemCount);
         if(itemCount == 0){
-            status="Empty";
+            status="Please enter data first";
+            $scope.controlStyle=""
         } else if(itemCount<=3){
             status="Enjoy!";
+            $scope.controlStyle="has-success"
         } else {
             status="Too Much!";
+            $scope.controlStyle="has-error"
         }
         $scope.lunchStatus = status;
     };

@@ -10,15 +10,16 @@
   </head>
 <script src="angular.min.js" charset="utf-8"></script>
 <script src="app.js" charset="utf-8"></script>
-<body ng-app="LunchChecker">
-   <div class="container" ng-controller="LunchCheckerController">
+<body ng-app="LunchCheck">
+   <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
-        <div class="form-group">
+        <div class="form-group {{controlStyle}}">
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control"
              ng-model="lunchItems">
-         </div>
+             <span id="helpBlock" class="help-block">Input does not consider , , empty items</span>
+         </div class = "form-group">
          <div class="form-group" ng-click="checkLunch();">
              <button class="btn btn-default">Check If Too Much</button>
          </div>
